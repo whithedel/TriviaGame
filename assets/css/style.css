@@ -1,0 +1,24 @@
+body {
+    background-image: url(../images/triviabackground.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.backscreen {
+    margin: auto;
+    width: 80%;
+    height: 100vh;
+    background-color: bisque;
+}
+
+.navbar-text {
+    font-size: 5rem;
+    color: rgba(129, 7, 7, 0.829) !important;
+    
+}
+
+.headerRow {
+    border-bottom: 2px solid black;  
+}
