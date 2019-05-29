@@ -22,3 +22,13 @@ body {
 .headerRow {
     border-bottom: 2px solid black;  
 }
+
+.card50 {
+    border: 2px solid salmon;
+}
+
+.jumbotron {
+    background: repeating-linear-gradient(30deg, black 0px, rgba(129, 7, 7, 0.829) 40px, bisque 40px);
+    color: rgb(238, 177, 33);
+    font-size: 25px;
+}
