@@ -19,6 +19,19 @@ var unanswered = 0
 
 $(document).ready(function () {
     $('#questionScreen').hide()
+
+    $(".selectChoice").on('click', function(event){
+        console.log('hello')
+        userInput = event.target.value;
+        console.log(userInput);
+        if (answersArr.includes(userInput)) {
+            unanswered -=1;
+            correctAnswers +=1;
+        } else {
+            unanswered -=1;
+            incorrectAnswers +=1;
+        }
+    })
 })
 
 //to show the questions screen
@@ -74,7 +87,7 @@ $('#startButton').on('click', function (event) {
     event.preventDefault();
     showQuestionScreen();
     loadTimer();
-    // startTimer();
+    startTimer();
     loadChoiceQ1();
     loadChoiceQ2();
     loadChoiceQ3();
@@ -141,27 +154,27 @@ var tableInsert = '<th scope="col"></th>'
 
 function loadChoiceQ1() {
     for (var i = 0; i < allQuestionArr[0].choices.length; i++){
-        var button = '<label><input type="radio" name="choices1" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices1" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
         $('#choiceQ1').append(button+'  '+allQuestionArr[0].choices[i]+'  '+'<br>'+'<br>');
-        for (var j=0; j<answersArr.length; j++){
-            $('input[value='+'"'+allQuestionArr[0].choices[i]+'"'+']').on('click', function(e){
-                if (allQuestionArr[0].choices[0]===answersArr[0]){
-                    correctAnswers ++
-                }
-            })
-        }       
+        // for (var j=0; j<answersArr.length; j++){
+        //     $('input[value='+'"'+allQuestionArr[0].choices[i]+'"'+']').on('click', function(e){
+        //         if (allQuestionArr[0].choices[0]===answersArr[0]){
+        //             correctAnswers ++
+        //         }
+        //     })
+        // }       
     }
 }
 function loadChoiceQ2() {
     for (var i = 0; i < allQuestionArr[1].choices.length; i++){
-        var button = '<label><input type="radio" name="choices2" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices2" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
         $('#choiceQ2').append(button+'  '+allQuestionArr[1].choices[i]+'  '+'<br>'+'<br>');
 
     }
 }
 function loadChoiceQ3() {
     for (var i = 0; i < allQuestionArr[2].choices.length; i++){
-        var button = '<label><input type="radio" name="choices3" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices3" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
         $('#choiceQ3').append(button+'  '+allQuestionArr[2].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -170,7 +183,7 @@ function loadChoiceQ3() {
 }
 function loadChoiceQ4() {
     for (var i = 0; i < allQuestionArr[3].choices.length; i++){
-        var button = '<label><input type="radio" name="choices4" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices4" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
         $('#choiceQ4').append(button+'  '+allQuestionArr[3].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -179,10 +192,11 @@ function loadChoiceQ4() {
 }
 function loadChoiceQ5() {
     for (var i = 0; i < allQuestionArr[4].choices.length; i++){
-        var button = '<label><input type="radio" name="choices5" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices5" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
         $('#choiceQ5').append(button+'  '+allQuestionArr[4].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
         }          
     }
 }
+
