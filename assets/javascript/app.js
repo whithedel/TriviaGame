@@ -8,31 +8,37 @@
 // Where was Lope de Vega born? (Madrid)
 // Who did Lady Diana Spencer marry? (Prince Charles)
 
-
-var timer = 30; //seconds
+//Global variable 
+var timer = 3; //seconds
 var counter;
 var allQuestionArr = [];
 var answersArr = [];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var unanswered = 0
+var unanswered = 5;
+ 
 
+//checking to see if correctAnswers, incorrectAnswers or unanswered should increase 
 $(document).ready(function () {
     $('#questionScreen').hide()
 
-    $(".selectChoice").on('click', function(event){
+    $(document).on('click',".selectChoice", function(event){
         console.log('hello')
         userInput = event.target.value;
         console.log(userInput);
-        if (answersArr.includes(userInput)) {
-            unanswered -=1;
-            correctAnswers +=1;
-        } else {
-            unanswered -=1;
-            incorrectAnswers +=1;
-        }
+        
+            if (answersArr.includes(userInput)&& event.target.checked) {
+                unanswered -=1;
+                correctAnswers +=1;
+            } else {
+                unanswered -=1;
+                incorrectAnswers +=1;
+            }
+        
+        
     })
 })
+
 
 //to show the questions screen
 function showQuestionScreen() {
@@ -64,6 +70,8 @@ function startTimer() {
         timer = timer - 1;
         if (timer < 0) {
             clearInterval(counter);
+            stats();
+            showStats();
             return;
         }
         console.log(timer);
@@ -81,7 +89,7 @@ function loadTimer() {
 }
 
 
-
+//global section of main functions
 $('#startButton').on('click', function (event) {
     console.log('you got clicked');
     event.preventDefault();
@@ -97,12 +105,17 @@ $('#startButton').on('click', function (event) {
     
 });
 
+// creating an object constructor.
 function questionsChoicesAnswers(questions,choices,answers) {
     this.questions = questions;
     this.choices = choices;
     this.answers = answers;
+    
 };
+
+
 /////////////////////////////////////////////////////////
+// creating my object 
 function pushingToAllQuestionsArr () {
     var q1 = new questionsChoicesAnswers ('With what country is France\'s longest land border?',['Brazil','USA','France','Russia'],'Brazil');
     var q2 = new questionsChoicesAnswers ('How many provinces does Holland have?',[3,6,2,0],0);
@@ -199,4 +212,16 @@ function loadChoiceQ5() {
         }          
     }
 }
+/// function to append stats.
+function stats(){
+    $('#statsScreen').append('<div>');
+    $('#statsScreen' + ' div:last-child').append('<br><br>'+'Correct answers '+correctAnswers+'<br><br>');
+    $('#statsScreen' + ' div:last-child').append('<br><br>'+'Incorrect answers '+incorrectAnswers+'<br><br>');
+    $('#statsScreen' + ' div:last-child').append('<br><br>'+'Unanswerd '+unanswered+'<br><br>');
+};
+/// pushing  stats to html 
+$('#submitButton').on('click', function(){
+    showStats();
+    stats();
 
+})
