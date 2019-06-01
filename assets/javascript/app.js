@@ -9,7 +9,7 @@
 // Who did Lady Diana Spencer marry? (Prince Charles)
 
 //Global variable 
-var timer = 3; //seconds
+var timer = 30; //seconds
 var counter;
 var allQuestionArr = [];
 var answersArr = [];
