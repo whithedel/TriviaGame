@@ -223,5 +223,6 @@ function stats(){
 $('#submitButton').on('click', function(){
     showStats();
     stats();
+    clearInterval(counter);
 
 })
