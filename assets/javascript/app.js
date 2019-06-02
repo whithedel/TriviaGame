@@ -180,14 +180,14 @@ function loadChoiceQ1() {
 }
 function loadChoiceQ2() {
     for (var i = 0; i < allQuestionArr[1].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices2" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices2" value='+'"'+allQuestionArr[1].choices[i]+'"'+'>'
         $('#choiceQ2').append(button+'  '+allQuestionArr[1].choices[i]+'  '+'<br>'+'<br>');
 
     }
 }
 function loadChoiceQ3() {
     for (var i = 0; i < allQuestionArr[2].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices3" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices3" value='+'"'+allQuestionArr[2].choices[i]+'"'+'>'
         $('#choiceQ3').append(button+'  '+allQuestionArr[2].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -196,7 +196,7 @@ function loadChoiceQ3() {
 }
 function loadChoiceQ4() {
     for (var i = 0; i < allQuestionArr[3].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices4" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices4" value='+'"'+allQuestionArr[3].choices[i]+'"'+'>'
         $('#choiceQ4').append(button+'  '+allQuestionArr[3].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -205,7 +205,7 @@ function loadChoiceQ4() {
 }
 function loadChoiceQ5() {
     for (var i = 0; i < allQuestionArr[4].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices5" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices5" value='+'"'+allQuestionArr[4].choices[i]+'"'+'>'
         $('#choiceQ5').append(button+'  '+allQuestionArr[4].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
