@@ -1,12 +1,4 @@
-// Who invented the telephone? (Bell)
-// Which nail grows fastest? (middle)
-// What temperature does water boil at? (100C)
-// What Spanish artist said he would eat his wife when she died? (Dali)
-// Who wrote Julius Caesar, Macbeth and Hamlet? (Shakespeare)
-// How many states are there in the United States of America? (50)
-// What did the crocodile swallow in Peter Pan? (alarm clock)
-// Where was Lope de Vega born? (Madrid)
-// Who did Lady Diana Spencer marry? (Prince Charles)
+
 
 //Global variable 
 var timer = 5; //seconds
@@ -18,26 +10,7 @@ var incorrectAnswers = 0;
 var unanswered = 0;
  
 
-//checking to see if correctAnswers, incorrectAnswers or unanswered should increase 
-// $(document).ready(function () {
-//     $('#questionScreen').hide()
 
-//     $(document).on('click',".selectChoice", function(event){
-//         console.log('hello')
-//         userInput = event.target.value;
-//         console.log(userInput);
-        
-//             if (answersArr.includes(userInput)&& event.target.checked) {
-//                 unanswered -=1;
-//                 correctAnswers +=1;
-//             } else {
-//                 unanswered -=1;
-//                 incorrectAnswers +=1;
-//             }
-        
-        
-//     })
-// })
 
 $(document).ready(function () {
     $('#questionScreen').hide()
@@ -70,6 +43,25 @@ function updateTimerText(){
     }
 }
 
+// function the will update the score system 
+function scoreUpdates(){
+    userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
+    console.log(userInput);
+    for (var i = 0; i<userInput.length; i++){
+        console.log(userInput[i])
+        console.log(userInput[i] === 'Brazil')
+        
+        if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
+            console.log('nonoono')
+            correctAnswers +=1;
+        } else if (userInput[i]=== undefined) {
+            unanswered +=1;
+            
+        }else {
+            incorrectAnswers +=1;
+        }
+    }
+}
 
 //starts the timer 
 function startTimer() {
@@ -78,26 +70,8 @@ function startTimer() {
         if (timer < 0) {
             clearInterval(counter);
             showStats();
-            // userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
-            // console.log(userInput);
-            // for (var i = 0; i<userInput.length; i++){
-            //     console.log(userInput[i])
-            //     console.log(userInput[i] === 'Brazil')
-            //     if (userInput[i]=== undefined){
-            //         unanswered +=1;
-            //     }
-            //     if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
-            //         console.log('nonoono')
-            //         // unanswered -=1;
-            //         correctAnswers +=1;
-            //     } else {
-            //         // unanswered -=1;
-            //         incorrectAnswers +=1;
-            //     }
-            // }
+            scoreUpdates();
             stats();
-            
-            
             return;
         }
         console.log(timer);
@@ -153,19 +127,6 @@ function pushingToAllQuestionsArr () {
     console.log(allQuestionArr)
 }
 pushingToAllQuestionsArr();
-////////////////////////////////////////////////////////////
-// questionsChoicesAnswers.prototype.addToIscorrect = function (){
-//     $('input[value='+'"'+allQuestionArr[1].choices[i]+'"'+']').on('click', function(e) {
-//         if (this.answers=this.choices[i]){
-//             correctAnswers++
-//         }
-//     })
-       
-// }
-
-////////////////////////////////////////////////////////////
-
-
 
 ////////////////////////////////////////////////////////////
 //looping through an object to and pushing to answersArr
@@ -179,29 +140,11 @@ var bbb = allQuestionArr.forEach(function(element) {
 
 var table = '<table class="table"><thead><tr><th scope="col">'
 var tableInsert = '<th scope="col"></th>'
-// var button = '<label><input type="radio" name="choices">'
-// var choices = function choices(){
-    
-// }
-
-// function loadQuestions() {
-    
-//     for ( var i = 0 ; i < allQuestionArr.length ; i++) {
-//         $('#questionScreen').append('<h1 id="choices">'+allQuestionArr[i].questions+'<br>'+'<br>');  
-//       }
-// }
 
 function loadChoiceQ1() {
     for (var i = 0; i < allQuestionArr[0].choices.length; i++){
         var button = '<label><input class="selectChoice" type="radio" name="choices1" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
-        $('#choiceQ1').append(button+'  '+allQuestionArr[0].choices[i]+'  '+'<br>'+'<br>');
-        // for (var j=0; j<answersArr.length; j++){
-        //     $('input[value='+'"'+allQuestionArr[0].choices[i]+'"'+']').on('click', function(e){
-        //         if (allQuestionArr[0].choices[0]===answersArr[0]){
-        //             correctAnswers ++
-        //         }
-        //     })
-        // }       
+        $('#choiceQ1').append(button+'  '+allQuestionArr[0].choices[i]+'  '+'<br>'+'<br>');      
     }
 }
 function loadChoiceQ2() {
@@ -238,6 +181,7 @@ function loadChoiceQ5() {
         }          
     }
 }
+
 /// function to append stats.
 function stats(){
     
@@ -246,6 +190,7 @@ function stats(){
     $('#statsScreen' + ' div:last-child').append('<br><br>'+'Incorrect answers '+incorrectAnswers+'<br><br>');
     $('#statsScreen' + ' div:last-child').append('<br><br>'+'Unanswerd '+unanswered+'<br><br>');
 };
+
 /// pushing  stats to html
  
 $('#submitButton').on('click', function(){
@@ -253,28 +198,7 @@ $('#submitButton').on('click', function(){
     
     clearInterval(counter);
     console.log('hello')
-        
-    userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
-    console.log(userInput);
-    for (var i = 0; i<userInput.length; i++){
-        console.log(userInput[i])
-        console.log(userInput[i] === 'Brazil')
-        
-        if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
-            console.log('nonoono')
-            // unanswered -=1;
-            correctAnswers +=1;
-        } else if (userInput[i]=== undefined) {
-            unanswered +=1;
-            
-        }else {
-            incorrectAnswers +=1;
-        }
-    }
-         
-        // $.inArray(userInput[i],answersArr)
-        
-    
+    scoreUpdates();
     stats();
     clearInterval(counter);
 
