@@ -249,8 +249,11 @@ $('#submitButton').on('click', function(){
             incorrectAnswers +=1;
         }
     }
-     stats();       
+         
         // $.inArray(userInput[i],answersArr)
         
     
+    stats();
+    clearInterval(counter);
+
 })
