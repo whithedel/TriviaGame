@@ -78,7 +78,7 @@ function startTimer() {
             clearInterval(counter);
             stats();
             showStats();
-            scoreUpdate();
+            
             return;
         }
         console.log(timer);
