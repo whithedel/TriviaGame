@@ -15,30 +15,36 @@ var allQuestionArr = [];
 var answersArr = [];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var unanswered = 5;
+var unanswered = 0;
  
 
 //checking to see if correctAnswers, incorrectAnswers or unanswered should increase 
+// $(document).ready(function () {
+//     $('#questionScreen').hide()
+
+//     $(document).on('click',".selectChoice", function(event){
+//         console.log('hello')
+//         userInput = event.target.value;
+//         console.log(userInput);
+        
+//             if (answersArr.includes(userInput)&& event.target.checked) {
+//                 unanswered -=1;
+//                 correctAnswers +=1;
+//             } else {
+//                 unanswered -=1;
+//                 incorrectAnswers +=1;
+//             }
+        
+        
+//     })
+// })
+
 $(document).ready(function () {
     $('#questionScreen').hide()
 
-    $(document).on('click',".selectChoice", function(event){
-        console.log('hello')
-        userInput = event.target.value;
-        console.log(userInput);
+    
         
-            if (answersArr.includes(userInput)&& event.target.checked) {
-                unanswered -=1;
-                correctAnswers +=1;
-            } else {
-                unanswered -=1;
-                incorrectAnswers +=1;
-            }
-        
-        
-    })
 })
-
 
 //to show the questions screen
 function showQuestionScreen() {
@@ -180,14 +186,14 @@ function loadChoiceQ1() {
 }
 function loadChoiceQ2() {
     for (var i = 0; i < allQuestionArr[1].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices2" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices2" value='+'"'+allQuestionArr[1].choices[i]+'"'+'>'
         $('#choiceQ2').append(button+'  '+allQuestionArr[1].choices[i]+'  '+'<br>'+'<br>');
 
     }
 }
 function loadChoiceQ3() {
     for (var i = 0; i < allQuestionArr[2].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices3" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices3" value='+'"'+allQuestionArr[2].choices[i]+'"'+'>'
         $('#choiceQ3').append(button+'  '+allQuestionArr[2].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -196,7 +202,7 @@ function loadChoiceQ3() {
 }
 function loadChoiceQ4() {
     for (var i = 0; i < allQuestionArr[3].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices4" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices4" value='+'"'+allQuestionArr[3].choices[i]+'"'+'>'
         $('#choiceQ4').append(button+'  '+allQuestionArr[3].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -205,7 +211,7 @@ function loadChoiceQ4() {
 }
 function loadChoiceQ5() {
     for (var i = 0; i < allQuestionArr[4].choices.length; i++){
-        var button = '<label><input class="selectChoice" type="radio" name="choices5" value='+'"'+allQuestionArr[0].choices[i]+'"'+'>'
+        var button = '<label><input class="selectChoice" type="radio" name="choices5" value='+'"'+allQuestionArr[4].choices[i]+'"'+'>'
         $('#choiceQ5').append(button+'  '+allQuestionArr[4].choices[i]+'  '+'<br>'+'<br>');
         for (var j=0; j<answersArr.length; j++){
             
@@ -222,6 +228,29 @@ function stats(){
 /// pushing  stats to html 
 $('#submitButton').on('click', function(){
     showStats();
-    stats();
-
+    
+    clearInterval(counter);
+    console.log('hello')
+        
+    userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
+    console.log(userInput);
+    for (var i = 0; i<userInput.length; i++){
+        console.log(userInput[i])
+        console.log(userInput[i] === 'Brazil')
+        if (userInput[i]=== undefined){
+            unanswered +=1;
+        }
+        if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
+            console.log('nonoono')
+            // unanswered -=1;
+            correctAnswers +=1;
+        } else {
+            // unanswered -=1;
+            incorrectAnswers +=1;
+        }
+    }
+     stats();       
+        // $.inArray(userInput[i],answersArr)
+        
+    
 })
