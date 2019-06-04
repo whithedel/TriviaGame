@@ -78,6 +78,7 @@ function startTimer() {
             clearInterval(counter);
             stats();
             showStats();
+            scoreUpdate();
             return;
         }
         console.log(timer);
@@ -257,3 +258,22 @@ $('#submitButton').on('click', function(){
     clearInterval(counter);
 
 })
+
+function scoreUpdate(){
+userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
+    console.log(userInput);
+    for (var i = 0; i<userInput.length; i++){
+        console.log(userInput[i])
+        console.log(userInput[i] === 'Brazil')
+        if (userInput[i]=== undefined){
+            unanswered +=1;
+        }
+        if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
+            console.log('nonoono')
+            // unanswered -=1;
+            correctAnswers +=1;
+        } else {
+            // unanswered -=1;
+            incorrectAnswers +=1;
+        }
+    }
