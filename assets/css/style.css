@@ -9,7 +9,7 @@ body {
 .backscreen {
     margin: auto;
     width: 80%;
-    height: 100vh;
+    overflow-y: scroll;
     background-color: bisque;
 }
 
@@ -32,3 +32,4 @@ body {
     color: rgb(238, 177, 33);
     font-size: 25px;
 }
+
