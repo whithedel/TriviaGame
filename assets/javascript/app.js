@@ -9,7 +9,7 @@
 // Who did Lady Diana Spencer marry? (Prince Charles)
 
 //Global variable 
-var timer = 30; //seconds
+var timer = 5; //seconds
 var counter;
 var allQuestionArr = [];
 var answersArr = [];
@@ -55,6 +55,7 @@ function showQuestionScreen() {
 
 // to show the stats screen 
 function showStats() {
+    
     $('#questionScreen').hide();
     $('#statsScreen').show();
 }
@@ -76,8 +77,27 @@ function startTimer() {
         timer = timer - 1;
         if (timer < 0) {
             clearInterval(counter);
-            stats();
             showStats();
+            // userInput = [$('input[name=choices1]:checked').val(),$('input[name=choices2]:checked').val(),$('input[name=choices3]:checked').val(),$('input[name=choices4]:checked').val(),$('input[name=choices5]:checked').val()];
+            // console.log(userInput);
+            // for (var i = 0; i<userInput.length; i++){
+            //     console.log(userInput[i])
+            //     console.log(userInput[i] === 'Brazil')
+            //     if (userInput[i]=== undefined){
+            //         unanswered +=1;
+            //     }
+            //     if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
+            //         console.log('nonoono')
+            //         // unanswered -=1;
+            //         correctAnswers +=1;
+            //     } else {
+            //         // unanswered -=1;
+            //         incorrectAnswers +=1;
+            //     }
+            // }
+            stats();
+            
+            
             return;
         }
         console.log(timer);
@@ -220,12 +240,14 @@ function loadChoiceQ5() {
 }
 /// function to append stats.
 function stats(){
+    
     $('#statsScreen').append('<div>');
     $('#statsScreen' + ' div:last-child').append('<br><br>'+'Correct answers '+correctAnswers+'<br><br>');
     $('#statsScreen' + ' div:last-child').append('<br><br>'+'Incorrect answers '+incorrectAnswers+'<br><br>');
     $('#statsScreen' + ' div:last-child').append('<br><br>'+'Unanswerd '+unanswered+'<br><br>');
 };
-/// pushing  stats to html 
+/// pushing  stats to html
+ 
 $('#submitButton').on('click', function(){
     showStats();
     
@@ -237,15 +259,15 @@ $('#submitButton').on('click', function(){
     for (var i = 0; i<userInput.length; i++){
         console.log(userInput[i])
         console.log(userInput[i] === 'Brazil')
-        if (userInput[i]=== undefined){
-            unanswered +=1;
-        }
+        
         if (userInput[i]==='Brazil'||userInput[i]==='0'||userInput[i]==='Antartica'||userInput[i]==='France'||userInput[i]==='McDonalds')  {
             console.log('nonoono')
             // unanswered -=1;
             correctAnswers +=1;
-        } else {
-            // unanswered -=1;
+        } else if (userInput[i]=== undefined) {
+            unanswered +=1;
+            
+        }else {
             incorrectAnswers +=1;
         }
     }
