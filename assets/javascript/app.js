@@ -1,7 +1,7 @@
 
 
 //Global variable 
-var timer = 5; //seconds
+var timer = 60; //seconds
 var counter;
 var allQuestionArr = [];
 var answersArr = [];
